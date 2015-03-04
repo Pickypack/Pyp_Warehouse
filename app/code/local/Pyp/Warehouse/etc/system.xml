@@ -113,15 +113,19 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </pyp_notify_send>
-                        <pyp_cashondelivery_string translate="label comment">
-                            <label>Cadena para reembolsos</label>
-                            <comment>Código del módulo (método de pago) utlizado para reembolsos. Los pedidos hechos con este código serán documentados para cobrar contra reembolso (con la comisión en origen).</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>80</sort_order>
+                        
+                        <pyp_cashondelivery_method translate="label comment">
+                            <label>Método de pago para reembolsos</label>
+                            <comment>Forma de pago para reembolsos. Los pedidos hechos con método de pago serán documentados para cobrar contra reembolso (con la comisión en origen).</comment>
+                            <source_model>adminhtml/system_config_source_payment_allmethods</source_model>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>90</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </pyp_cashondelivery_string>
+                        </pyp_cashondelivery_method>
+
+
                     </fields>
                 </pyp_options>
                 <pyp_development translate="label" module="warehouse">

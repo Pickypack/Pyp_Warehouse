@@ -251,15 +251,21 @@ class Pyp_Warehouse_Model_Connector extends Mage_Core_Model_Abstract {
             $servicio = ENACEX;
         }
 
+        $onDeliveryAmount = 0;   
+        $cashMethods = explode(",", Mage::getStoreConfig('pyp/pyp_options/pyp_cashondelivery_method', Mage::app()->getStore()));
+        if (in_array($shipment->getOrder()->getPayment()->getMethod(), $cashMethods)) {
+            $onDeliveryAmount = $shipment->getOrder()->getPayment()->getAmountOrdered();
+        }
+/*
         $onDeliveryString = Mage::getStoreConfig('pyp/pyp_options/pyp_cashondelivery_string', Mage::app()->getStore());
         if (!$onDeliveryString) $onDeliveryString = "cashondelivery";
-
         if(preg_match("/$onDeliveryString/i", $shipment->getOrder()->getPayment()->getMethod())){
             $onDeliveryAmount = $shipment->getOrder()->getPayment()->getAmountOrdered();
         }
         else {
             $onDeliveryAmount = 0;   
         }
+*/
         
     	$ret = array(
     			"increment_id" => $shipment->getIncrementId()
