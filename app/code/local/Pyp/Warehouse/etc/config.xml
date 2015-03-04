@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to hola@pickypack.es so we can send you a copy immediately.
+ *
+ * @category    Pyp
+ * @package     Pyp_Warehouse
+ * @copyright   Copyright (c) 2013 Pickypack KG (http://pickypack.es)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+		<Pyp_Warehouse>
+			<version>0.1.2</version>
+		</Pyp_Warehouse>
+    </modules>
+    <frontend>
+        <routers>
+            <pyp_noticer>
+                <use>standard</use>
+                <args>
+                    <module>Pyp_Warehouse</module>
+                    <frontName>pyp_noticer</frontName>
+                </args>
+            </pyp_noticer>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <warehouse>
+                <class>Pyp_Warehouse_Model</class>
+            </warehouse>
+        </models>
+        <helpers>
+            <warehouse>
+                <class>Pyp_Warehouse_Helper</class>
+            </warehouse>
+        </helpers>
+		<events>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <order_saved>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>shipmentSaved</method>
+                    </order_saved>
+                </observers>
+            </sales_order_shipment_save_after>
+            <order_cancel_after>
+                <observers>
+                    <order_saved>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>orderCanceled</method>
+                    </order_saved>
+                </observers>
+            </order_cancel_after>
+            <catalog_product_save_after>
+                <observers>
+                    <product_saved>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>productSaved</method>
+                    </product_saved>
+                </observers>
+            </catalog_product_save_after>
+            <sales_order_save_after>
+                <observers>
+                    <order_change>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>statusChanged</method>
+                    </order_change>
+                </observers>
+            </sales_order_save_after>
+            <admin_system_config_changed_section_pyp>
+                <observers>
+                    <config_saved>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>register</method>
+                    </config_saved>
+                </observers>
+            </admin_system_config_changed_section_pyp>
+            
+            <!--cataloginventory_stock_item_save_after>
+                <observers>
+                    <stock_item_saved>
+                        <type>singleton</type>
+                        <class>Pyp_Warehouse_Model_Connector</class>
+                        <method>stockItemSaved</method>
+                    </stock_item_saved>
+                </observers>
+            </cataloginventory_stock_item_save_after -->
+            
+            
+        </events>
+	    <resources>
+	          <warehouse_setup>
+	              <setup>
+	                  <module>Pyp_Warehouse</module>
+	                  <class>Pyp_Warehouse_Model_Resource_Eav_Mysql4_Setup</class>
+	              </setup>
+	          </warehouse_setup>
+		</resources>
+    </global>	
+	<adminhtml>
+	    <acl>
+	        <resources>
+	            <all>
+	                <title>Allow Everything</title>
+	            </all>
+	            <admin>
+	                <children>
+	                    <system>
+	                        <children>
+	                            <config>
+	                                <children>
+	                                    <pyp>
+	                                        <title>Pyp - All</title>
+	                                    </pyp>
+	                                </children>
+	                            </config>
+	                        </children>
+	                    </system>
+	                </children>
+	            </admin>
+	        </resources>
+	    </acl>
+	</adminhtml>
+    
+</config>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to hola@pickypack.es so we can send you a copy immediately.
+ *
+ * @category    Pyp
+ * @package     Pyp_Warehouse
+ * @copyright   Copyright (c) 2013 Pickypack KG (http://pickypack.es)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <tabs>
+        <pyp translate="label" module="warehouse">
+            <label>Pickypack</label>
+            <sort_order>100</sort_order>
+        </pyp>
+    </tabs>
+    <sections>
+        <pyp translate="label" module="warehouse">
+            <label>Warehouse</label>
+            <tab>pyp</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <pyp_config translate="label" module="warehouse">
+                    <label>Identificación</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <pyp_email translate="label">
+                            <label>Email Pickypack: </label>
+                            <comment>Email de registro en Pickypack</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_email>
+                        <pyp_apikey translate="label">
+                            <label>Pickypack Key: </label>
+                            <comment>Asignada en el panel de control de Pickypack</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_apikey>
+                    </fields>
+                </pyp_config>
+                <pyp_options translate="label" module="warehouse">
+                    <label>Opciones</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <pyp_enabled translate="label">
+                            <label>Activar módulo: </label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_enabled>
+                        <pyp_update_stock translate="label">
+                            <label>Actualizar stock: </label>
+                            <comment>Modificar stock de los productos de las entradas de mercancia</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_update_stock>
+
+                        <pyp_ready_status translate="label">
+                            <label>Estado para pedido aprobado:</label>
+                            <comment>Cuando el pedido pase a este estado se enviará a preparar automáticamente</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pyp_ready_status>
+                        
+                        <pyp_notify_send translate="label comment">
+                            <label>Notificar cliente</label>
+                            <comment>Cuando está a sí notificará por email al cliente de que el pedido ha sido enviado.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_notify_send>
+                        <pyp_cashondelivery_string translate="label comment">
+                            <label>Cadena para reembolsos</label>
+                            <comment>Código del módulo (método de pago) utlizado para reembolsos. Los pedidos hechos con este código serán documentados para cobrar contra reembolso (con la comisión en origen).</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_cashondelivery_string>
+                    </fields>
+                </pyp_options>
+                <pyp_development translate="label" module="warehouse">
+                    <label>Desarrollo</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <pyp_url translate="label">
+                            <label>URL API Pickypack: </label>
+                            <comment>Si se deja en blanco, utiliza la dirección correcta</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pyp_url>
+                    </fields>
+                </pyp_development>
+            </groups>
+        </pyp>
+    </sections>
+</config>
