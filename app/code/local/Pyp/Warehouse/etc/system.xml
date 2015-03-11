@@ -92,7 +92,7 @@
                             <show_in_store>0</show_in_store>
                         </pyp_update_stock>
 
-                        <pyp_ready_status translate="label">
+                        <!-- pyp_ready_status translate="label">
                             <label>Estado para pedido aprobado:</label>
                             <comment>Cuando el pedido pase a este estado se enviará a preparar automáticamente</comment>
                             <frontend_type>select</frontend_type>
@@ -101,7 +101,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </pyp_ready_status>
+                        </pyp_ready_status -->
                         
                         <pyp_notify_send translate="label comment">
                             <label>Notificar cliente</label>
